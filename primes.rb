@@ -42,6 +42,11 @@ class Prime
     ! results.values.include?(false)
   end
 
+  def self.two_sided_prime?(number)
+    Prime.left_truncatable_prime?(number) and \
+      Prime.right_truncatable_prime?(number)
+  end
+
 end
 
 class TestPrime < Test::Unit::TestCase
@@ -72,6 +77,12 @@ class TestPrime < Test::Unit::TestCase
   def test_rtp
     @primes[:rtp].each do |p|
       assert(Prime.right_truncatable_prime?(p), sprintf('not rtp, should be[%s]', p))
+    end
+  end
+
+  def test_two_sided
+    @primes[:two_sided].each do |p|
+      assert(Prime.two_sided_prime?(p), sprintf('not two sided, should be[%s]', p))
     end
   end
 
