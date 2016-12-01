@@ -62,7 +62,10 @@ class TestCircularArray < Test::Unit::TestCase
       position   = a.index(original_o)
 
       assert_not_equal(o, o.next)
+      assert_equal(o.inspect, original_o)
+
       assert_not_equal(o, o.last)
+      assert_equal(o.inspect, original_o)
 
       assert_equal(o.next, a[position + 1])
       assert_equal(o.last, a[position - 1])
@@ -76,7 +79,15 @@ class TestCircularArray < Test::Unit::TestCase
     @arrays.each do |a|
       o = CircularArray.new(a)
 
+      original_o = o.inspect
 
+      assert_not_equal(o, o.next!)
+      assert_not_equal(o, original_o)
+
+      assert_not_equal(o, o.last!)
+      assert_not_equal(o, original_o)
+
+      assert_equal(o.inspect, original_o) # we moved forward and backwards 1 position, so back to normal
 
     end
   end
