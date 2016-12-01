@@ -7,6 +7,8 @@ source 'https://rubygems.org'
 gem 'log4r', '~> 1.1.9'
 gem 'json'
 gem 'rake'
+gem 'hoe'
 
+gem 'test-unit', '2.0.0'
 
 gem 'curses'
