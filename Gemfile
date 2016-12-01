@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 # general
 gem 'log4r', '~> 1.1.9'
 gem 'json'
+gem 'rake'
 
 
-require 'curses'
+gem 'curses'

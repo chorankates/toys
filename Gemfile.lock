@@ -1,15 +1,19 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    curses (1.0.2)
     json (1.8.3)
     log4r (1.1.10)
+    rake (11.3.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  curses
   json
   log4r (~> 1.1.9)
+  rake
 
 RUBY VERSION
    ruby 2.0.0p648
