@@ -122,7 +122,17 @@ module Conway
     end
 
     def count
-      #1.upto(@size_x).each do |x|
+      results = Hash.new(0)
+      1.upto(@size_x).each do |x|
+        1.upto(@size_y).each do |y|
+          cell = @grid[x][y]
+
+          results[:alive] += 1 if cell.alive?
+          results[:dead]  += 1 if cell.dead?
+        end
+      end
+
+      results
     end
 
     def cycle
@@ -164,8 +174,9 @@ module Conway
     end
 
     def to_s
+      count = self.count
       str = ''
-      str << sprintf('cycle[%s], [alive: %s, dead:%s]:%s', @tick, "", "", "\n")
+      str << sprintf('cycle[%s]: alive[%s] dead[%s]:%s', @tick, count[:alive], count[:dead], "\n")
       1.upto(@size_x).each do |x|
         1.upto(@size_y).each do |y|
           str << @grid[x][y].to_s
